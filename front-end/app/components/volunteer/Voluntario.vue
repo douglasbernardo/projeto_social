@@ -11,7 +11,15 @@
         </p>
       </v-col>
     </v-row>
-
+       <v-btn
+        class="text-none mb-4"        
+        size="x-large"
+        variant="outlined"
+        rounded="lg"
+        elevation="4"
+      >
+        FAZER A DIFERENÇA
+      </v-btn>
     <v-expansion-panels class="d-flex ga-3" color="purple">
       <v-expansion-panel
         v-for="item in eventos"
