@@ -12,37 +12,22 @@
       </v-col>
     </v-row>
 
-    <!-- 🔹 Linha do Tempo -->
-    <v-row class="mb-16">
-      <v-col cols="12">
-        <h2 class="text-h5 font-weight-bold mb-5">Maneiras de se tornar um voluntário</h2>
-        <v-row
-            align="center"
-            style="height: 150px;"
-            no-gutters
-        >
-        <v-col
-          v-for="n in eventos"
-          :key="n"
-        >
-            <v-card
-                class="mx-auto"
-                :prepend-icon="n.icon"
-                width="400"
-            >
-            <template v-slot:title>
-                <span class="font-weight-black">{{ n.title }}</span>
-            </template>
-
-            <v-card-text class="bg-surface-light pt-4">
-                {{ n.description }}
-            </v-card-text>
-            </v-card>
-            
-        </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
+    <v-expansion-panels class="d-flex ga-3" color="purple">
+      <v-expansion-panel
+        v-for="item in eventos"
+        :key="item"
+        elevation="1"
+        bg-color="blue-grey-darken-3"
+        height="70"
+        :text="item.description"
+      >
+        <template #title>
+          <span style="font-weight: 600;">
+            {{ item.title }}
+          </span>
+        </template>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </v-container>
 </template>
 
@@ -85,14 +70,6 @@ const eventos = [
   },
 ]
 
-const fotos = [
-  '/momentos/momento1.jpg',
-  '/momentos/momento2.jpg',
-  '/momentos/momento3.jpg',
-  '/momentos/momento4.jpg',
-  '/momentos/momento5.jpg',
-  '/momentos/momento6.jpg',
-]
 </script>
 
 <style scoped>
