@@ -6,9 +6,12 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
+
   vite: {
     server: {
       allowedHosts: true
     }
   },
+
+  modules: ['@pinia/nuxt'],
 })

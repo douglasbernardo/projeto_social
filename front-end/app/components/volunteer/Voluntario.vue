@@ -13,13 +13,19 @@
     </v-row>
        <v-btn
         class="text-none mb-4"        
-        size="x-large"
+        size="large"
         variant="outlined"
         rounded="lg"
         elevation="4"
+        @click="dialogForm= true"
       >
         FAZER A DIFERENÇA
       </v-btn>
+      <v-dialog v-model="dialogForm" max-width="600">
+        <v-card class="d-flex ma-2 pa-5">
+          <FormVolunter />
+        </v-card>
+      </v-dialog>
     <v-expansion-panels class="d-flex ga-3" color="purple">
       <v-expansion-panel
         v-for="item in eventos"
@@ -40,6 +46,9 @@
 </template>
 
 <script setup>
+import FormVolunter from '../FormVolunter.vue';
+
+const dialogForm = ref(false)
 const eventos = [
   {
     title: 'Seu Tempo',
@@ -54,7 +63,7 @@ const eventos = [
   {
     title: 'Suas Habilidades',
     icon: 'mdi mdi-human-capacity-increase',
-    description: 'Você também pode contribuir oferecendo suas habilidades profissionais. Áreas como design, marketing, fotografia, administração, tecnologia, pedagogia e jurídico fazem muita diferença dentro da ONG. Cada talento pode ser usado para fortalecer projetos, melhorar processos e alcançar ainda mais pessoas. É uma forma especial de voluntariar, colocando seu conhecimento a serviço de quem precisa..',
+    description: 'Você também pode contribuir oferecendo suas habilidades profissionais. Áreas como design, marketing, fotografia, administração, tecnologia, pedagogia e jurídico fazem muita diferença dentro da ONG. Cada talento pode ser usado para fortalecer projetos, melhorar processos e alcançar ainda mais pessoas. É uma forma especial de voluntariar, colocando seu conhecimento a serviço de quem precisa.',
   },
   {
     title: 'Doação de Alimentos, roupas e itens essenciais',
