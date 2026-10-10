@@ -13,13 +13,13 @@ export class Volunter extends Document {
   phone: string;
 
   @Prop()
-  neighboorhood: string;
+  city: string;
 
   @Prop()
-  areahelped: string[];
+  areasIWillHelp: string[];
 
   @Prop()
-  knownWhere: string;
+  howDidYouKnowUs: string;
 }
 
 export const volunterSchema = SchemaFactory.createForClass(Volunter);

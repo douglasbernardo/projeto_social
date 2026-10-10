@@ -8,9 +8,9 @@ export class addVolunterDto{
     @IsString()
     phone: string;
     @IsString()
-    neighboorhood: string;
+    city: string;
     @IsString()
-    helpareas: string[];
+    areasIWillHelp: string[];
     @IsString()
-    knownWhere: string;
+    howDidYouKnowUs: string;
 }

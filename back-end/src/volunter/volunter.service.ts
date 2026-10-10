@@ -13,12 +13,13 @@ export class VolunterService{
             name: data.name,
             birthDate: data.birthDate,
             phone: data.phone,
-            neighboorhood: data.neighboorhood,
-            areahelped: data.helpareas,
-            knowWhere: data.knownWhere
+            city: data.city,
+            areasIWillHelp: data.areasIWillHelp,
+            howDidYouKnowUs: data.howDidYouKnowUs
         })
+        console.log(data)
         // validação básica do formulario de voluntarios
-        if(!data.name || !data.birthDate || !data.phone || !data.neighboorhood || !data.helpareas.length || !data.knownWhere){
+        if(!data.name || !data.birthDate || !data.phone || !data.city || !data.areasIWillHelp.length || !data.howDidYouKnowUs){
             throw new BadRequestException(
                 'Todos os dados devem ser preenchidos'
             );
