@@ -11,13 +11,26 @@
             label="Nome"
             clearable
         ></v-text-field>
-        <v-text-field
-            v-model="dataVolunter.phone"
-            :readonly="loading"
-            :rules="[required('Celular')]"
-            label="(DDD) 998230990"
-            clearable
-        ></v-text-field>
+        <v-row>
+            <v-col>
+                <v-text-field
+                    v-model="dataVolunter.email"
+                    :readonly="loading"
+                    :rules="[required('Email')]"
+                    label="E-mail"
+                    clearable
+                ></v-text-field>
+            </v-col>
+            <v-col>
+                <v-text-field
+                    v-model="dataVolunter.phone"
+                    :readonly="loading"
+                    :rules="[required('Celular')]"
+                    label="DDD 998230990"
+                    clearable
+                ></v-text-field>
+            </v-col>
+        </v-row>
         <v-date-input
             v-model="dataVolunter.birthDate"
             label="Data de Nascimento"
@@ -73,6 +86,7 @@ import { useVolunterStore } from '~/store/volunterStore'
 
   const dataVolunter = reactive({
     name: '',
+    email: '',
     phone: '',
     city: '',
     birthDate: '',
