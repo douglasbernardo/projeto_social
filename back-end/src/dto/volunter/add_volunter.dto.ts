@@ -6,6 +6,8 @@ export class addVolunterDto{
     @IsString()
     birthDate: string;
     @IsString()
+    email: string;
+    @IsString()
     phone: string;
     @IsString()
     city: string;

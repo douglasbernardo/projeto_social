@@ -12,6 +12,7 @@ export class VolunterService{
         const addingNewVolunter = new this.volunterModel({
             name: data.name,
             birthDate: data.birthDate,
+            email: data.email,
             phone: data.phone,
             city: data.city,
             areasIWillHelp: data.areasIWillHelp,
@@ -24,7 +25,20 @@ export class VolunterService{
                 'Todos os dados devem ser preenchidos'
             );
         }
-        return addingNewVolunter.save()
+
+        try{
+            const users = await this.getAll()
+            const emailExists = users.some((user) => data.email == user.email)
+            if(emailExists){
+                throw new BadRequestException('Já existe voluntário com esse e-mail')
+            }
+
+            return addingNewVolunter.save()
+        }catch(e){
+            if (e instanceof BadRequestException) {
+                throw e
+            }
+        }
     }
     async getAll(){
         return this.volunterModel.find()

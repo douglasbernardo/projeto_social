@@ -10,6 +10,9 @@ export class Volunter extends Document {
   birthDate: string;
 
   @Prop()
+  email: string;
+
+  @Prop()
   phone: string;
 
   @Prop()
