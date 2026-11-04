@@ -18,7 +18,6 @@ export class VolunterService{
             areasIWillHelp: data.areasIWillHelp,
             howDidYouKnowUs: data.howDidYouKnowUs
         })
-        console.log(data)
         // validação básica do formulario de voluntarios
         if(!data.name || !data.birthDate || !data.phone || !data.city || !data.areasIWillHelp.length || !data.howDidYouKnowUs){
             throw new BadRequestException(
@@ -26,13 +25,17 @@ export class VolunterService{
             );
         }
 
+        if(this.validateEmail(data.email) === false) throw new BadRequestException('E-mail inválido');
+
         try{
+            if(!this.validateEmail(data.email)) throw new BadRequestException('E-mail inválido') 
             const users = await this.getAll()
             const emailExists = users.some((user) => data.email == user.email)
             if(emailExists){
                 throw new BadRequestException('Já existe voluntário com esse e-mail')
             }
 
+            console.log(addingNewVolunter)
             return addingNewVolunter.save()
         }catch(e){
             if (e instanceof BadRequestException) {
@@ -42,5 +45,8 @@ export class VolunterService{
     }
     async getAll(){
         return this.volunterModel.find()
+    }
+    validateEmail(email: string){
+        return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(email)
     }
 }
