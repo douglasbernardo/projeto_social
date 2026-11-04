@@ -26,6 +26,7 @@
                     v-model="dataVolunter.phone"
                     :readonly="loading"
                     :rules="[required('Celular')]"
+                    @update:model-value="dataVolunter.phone = String($event ?? '').replace(/\D/g, '')"
                     label="DDD 998230990"
                     clearable
                 ></v-text-field>
@@ -132,7 +133,15 @@ async function onSubmit() {
     loading.value = false
   }
 }
-function required(nameInput: string) {
-  return (v) => !!v || `${nameInput} é obrigatório`
+function required(nameInput: string, cellphone = false) {
+  return (v: string) => {
+    if (!v) return `${nameInput} é obrigatório`
+
+    if (cellphone && !/^\d+$/.test(v)) {
+      return `${nameInput} deve conter apenas números`
+    }
+
+    return true
+  }
 }
 </script>
